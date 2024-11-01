@@ -1,9 +1,14 @@
 /* ヘッダーのスタイル */
+@font-face {
+    font-family: 'Corporate-Logo-Bold-ver3'; /* フォントの名前を指定 */
+    src: url('fonts/Corporate-Logo-Bold-ver3.otf') format('truetype'); /* フォントファイルのパスを指定 */
+}
+
 #header {
-    color: white;
-    height: 10vh; /* ビューポートの高さの10%に設定 */
+    color: black; /* ヘッダーの文字色を黒に */
+    height: 7vh; /* ビューポートの高さの7%に設定 */
     width: 100%;
-    background-color: #333;
+    background-color: white; /* ヘッダーの色を白に設定 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,25 +24,26 @@ nav {
 
 /* ナビゲーションボタンのスタイル */
 nav .nav-button {
-    color: white;
+    color: black; /* ボタン内の文字色を黒に設定 */
     text-decoration: none;
-    padding: 1vh 2vw; /* 高さをvh、横幅をvwで設定 */
+    padding: 1.5vh 2vw; /* 高さをvh、横幅をvwで設定 */
     margin: 0 1vw; /* 横のマージンもvwで設定 */
-    font-size: 2vh; /* フォントサイズをvhで設定 */
+    font-size: 1.8vh; /* 文字サイズを調整 */
+    letter-spacing: 0.1em; /* 文字の間隔を調整 */
+    font-family: 'Corporate-Logo-Bold-ver3', sans-serif; /* コーポレートロゴフォントを指定 */
     min-width: 60px; /* 最小幅を設定 */
     min-height: 30px; /* 最小高を設定 */
-    background-color: #555;
+    background-color: transparent; /* ボタンの背景を透明に設定 */
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* 背景色とスケールの変化を追加 */
     display: flex; /* フレックスボックスで中央揃え */
     align-items: center; /* 垂直方向に中央揃え */
     justify-content: center; /* 水平方向に中央揃え */
-    flex-shrink: 0; /* ボタンの縮小を防ぐ */
 }
 
+/* ボタンがホバーしたときのスタイル */
 nav .nav-button:hover {
-    background-color: #777;
-    transform: scale(1.05); /* ホバー時にボタンを少し拡大 */
+    color: #333; /* ボタン内の文字色を青みのかかった黒に設定 */
+    /* アニメーションや背景色の変更は削除 */
 }
 
 /* スライドショーのスタイル */
@@ -76,3 +82,4 @@ main {
 section {
     margin-top: 20px; /* スライドショーとのスペース */
 }
+
