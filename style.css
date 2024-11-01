@@ -1,5 +1,78 @@
-body {
-    background-color: darkslategray;
+/* ヘッダーのスタイル */
+#header {
     color: white;
-    font-family: : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 10vh; /* ビューポートの高さの10%に設定 */
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* 位置を相対的に設定 */
+    z-index: 10; /* スライドショーの上に表示 */
+}
+
+/* ナビゲーションのスタイル */
+nav {
+    display: flex; /* ナビゲーションをフレックスボックスに */
+    flex-direction: row; /* 横並びに設定 */
+}
+
+/* ナビゲーションボタンのスタイル */
+nav .nav-button {
+    color: white;
+    text-decoration: none;
+    padding: 1vh 2vw; /* 高さをvh、横幅をvwで設定 */
+    margin: 0 1vw; /* 横のマージンもvwで設定 */
+    font-size: 2vh; /* フォントサイズをvhで設定 */
+    min-width: 60px; /* 最小幅を設定 */
+    min-height: 30px; /* 最小高を設定 */
+    background-color: #555;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 背景色とスケールの変化を追加 */
+    display: flex; /* フレックスボックスで中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+    justify-content: center; /* 水平方向に中央揃え */
+    flex-shrink: 0; /* ボタンの縮小を防ぐ */
+}
+
+nav .nav-button:hover {
+    background-color: #777;
+    transform: scale(1.05); /* ホバー時にボタンを少し拡大 */
+}
+
+/* スライドショーのスタイル */
+.slideshow-container {
+    width: 100%;
+    height: calc(100vh - 10vh); /* ビューポートの高さからヘッダーの高さを引く */
+    margin: 0; /* マージンをゼロに */
+    position: relative;
+    top: 0; /* ヘッダーの下に表示 */
+    overflow: hidden;
+}
+
+/* 各スライドのスタイル */
+.slide {
+    width: 100%;
+    height: auto; /* 高さを自動に設定 */
+    max-height: calc(100vh - 10vh); /* ヘッダーの高さを考慮して最大高さを設定 */
+    position: absolute;
+    top: 0; /* ヘッダーの最下部に接着 */
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease; /* 1秒のフェード効果 */
+    object-fit: cover; /* アスペクト比を保ちながら収める */
+}
+
+/* 最初のスライドを表示 */
+.slide.active {
+    opacity: 1;
+}
+
+/* メインコンテンツのスタイル */
+main {
+    padding: 20px; /* 上下のパディングを追加 */
+}
+
+section {
+    margin-top: 20px; /* スライドショーとのスペース */
 }
