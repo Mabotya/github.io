@@ -149,17 +149,12 @@ html, body {
     margin: 0; /* マージンをゼロに */
 }
 
-
-
 .essay-image {
     width: 100%; /* コンテナの幅にぴったり合わせる */
     height: 100%; /* コンテナの高さに合わせる */
     object-fit: cover; /* 画像のアスペクト比を保ちつつコンテナに収める */
     filter: blur(2px); /* ぼかし効果を追加 */
 }
-
-
-
 
 .essay-title {
     position: absolute; /* 絶対位置を設定 */
@@ -170,4 +165,21 @@ html, body {
     border-radius: 5px; /* 角を丸く設定 */
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5); /* 文字に影をつけて視認性を向上 */
     z-index: 10; /* 前面に表示 */
+    font-family: 'Corporate-Logo-Bold-ver3', sans-serif; /* フォントを指定 */
+}
+
+.essay-list-title {
+    text-align: center; /* 中央揃え */
+    font-size: 2.5em; /* フォントサイズを調整 */
+    margin-top: 20px; /* 上部のマージンを追加 */
+    letter-spacing: 0.05em; /* 文字間隔を調整 */
+}
+
+.essay-list-subtitle {
+    text-align: center; /* 中央揃え */
+    font-size: 1.1em; /* フォントサイズを調整 */
+    margin-top: -20px; /* 上部のマージンを少し減らす */
+    margin-bottom: 20px; /* 下部のマージンを追加 */
+    color: rgb(0, 0, 0); /* 文字色を灰色に設定 */
+    letter-spacing: 0.3em; /* 文字間隔を調整 */
 }
