@@ -9,22 +9,32 @@
 </head>
 
 <body>
+    <!-- ページ最上部のアンカー -->
+    <a id="top"></a>
 
     <!-- ヘッダー -->
     <header id="header">
         <nav>
-            <a href="#home" class="nav-button">HOME</a>
+            <a href="#top" class="nav-button">HOME</a> <!-- "ホーム"を"HOME"に変更 -->
             <a href="#services" class="nav-button">MABOTYA</a>
             <a href="#contact" class="nav-button">ESSAY</a>
         </nav>
     </header>
 
-    <!-- スライドショーコンテナ -->
-    <div class="slideshow-container">
-        <img src="images/ホームスライド1.png" alt="スライド1" class="slide">
-        <img src="images/ホームスライド2.png" alt="スライド2" class="slide">
-        <img src="images/ホームスライド3.png" alt="スライド3" class="slide">
+   <!-- スライドショーコンテナ -->
+<div class="slideshow-container">
+    <img src="images/ホームスライド1.png" alt="スライド1" class="slide">
+    <img src="images/ホームスライド2.png" alt="スライド2" class="slide">
+    <img src="images/ホームスライド3.png" alt="スライド3" class="slide">
+    
+    <!-- インジケーター -->
+    <div class="indicator-container">
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
     </div>
+</div>
+
 
     <!-- メインコンテンツ -->
     <main>
@@ -36,7 +46,5 @@
 
     <!-- スライドショー用JavaScript -->
     <script src="script.js"></script>
-
 </body>
-
 </html>

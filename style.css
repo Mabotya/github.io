@@ -1,12 +1,13 @@
-/* ヘッダーのスタイル */
+/* フォントの読み込み */
 @font-face {
-    font-family: 'Corporate-Logo-Bold-ver3'; /* フォントの名前を指定 */
-    src: url('fonts/Corporate-Logo-Bold-ver3.otf') format('truetype'); /* フォントファイルのパスを指定 */
+    font-family: 'Corporate-Logo-Bold-ver3';
+    src: url('fonts/Corporate-Logo-Bold-ver3.otf') format('truetype');
 }
 
+/* ヘッダーのスタイル */
 #header {
     color: black; /* ヘッダーの文字色を黒に */
-    height: 7vh; /* ビューポートの高さの7%に設定 */
+    height: 10vh; /* ビューポートの高さの10%に設定 */
     width: 100%;
     background-color: white; /* ヘッダーの色を白に設定 */
     display: flex;
@@ -28,7 +29,7 @@ nav .nav-button {
     text-decoration: none;
     padding: 1.5vh 2vw; /* 高さをvh、横幅をvwで設定 */
     margin: 0 1vw; /* 横のマージンもvwで設定 */
-    font-size: 1.8vh; /* 文字サイズを調整 */
+    font-size: 1.6vh; /* 文字サイズを調整 */
     letter-spacing: 0.1em; /* 文字の間隔を調整 */
     font-family: 'Corporate-Logo-Bold-ver3', sans-serif; /* コーポレートロゴフォントを指定 */
     min-width: 60px; /* 最小幅を設定 */
@@ -67,6 +68,8 @@ nav .nav-button:hover {
     opacity: 0;
     transition: opacity 1s ease; /* 1秒のフェード効果 */
     object-fit: cover; /* アスペクト比を保ちながら収める */
+    aspect-ratio: 2.35; /* アスペクト比を2.35:1に設定 */
+    z-index: 0; /* スライドがインジケーターの背面に表示されるように */
 }
 
 /* 最初のスライドを表示 */
@@ -83,3 +86,45 @@ section {
     margin-top: 20px; /* スライドショーとのスペース */
 }
 
+/* インジケーターのスタイル */
+.indicator-container {
+    text-align: center; /* 中央揃え */
+    position: absolute; /* 絶対位置に設定 */
+    bottom: 20px; /* スライドの下に配置 */
+    left: 50%; /* 中央に配置 */
+    transform: translateX(-50%); /* 中央揃えのためのトランスフォーム */
+    z-index: 1; /* スライドより前面に表示 */
+}
+
+.indicator {
+    display: inline-block; /* インラインブロックに設定 */
+    width: 10px; /* インジケーターの幅 */
+    height: 10px; /* インジケーターの高さ */
+    margin: 0 5px; /* 左右のマージン */
+    border-radius: 50%; /* 丸くする */
+    background-color: #bbb; /* デフォルトの色 */
+    opacity: 0.5; /* 初期の不透明度 */
+    transition: opacity 0.6s; /* フェード効果 */
+}
+
+.indicator.active {
+    background-color: #717171; /* アクティブなインジケーターの色 */
+    opacity: 1; /* 不透明度を完全にする */
+}
+
+/* スクロールバーのスタイル */
+::-webkit-scrollbar {
+    width: 12px; /* スクロールバーの幅を設定 */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* スクロールバーの背景を透明に設定 */
+    border-radius: 10px; /* スクロールバーの角を丸くする */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* スクロール部分の色（半透明の黒） */
+    border-radius: 10px; /* 角を丸く設定 */
+    border: 3px solid transparent; /* 内側に透明の境界線で角の丸みを際立たせる */
+    background-clip: content-box; /* 背景クリッピングを設定 */
+}
