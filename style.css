@@ -44,7 +44,6 @@ nav .nav-button {
 /* ボタンがホバーしたときのスタイル */
 nav .nav-button:hover {
     color: #333; /* ボタン内の文字色を青みのかかった黒に設定 */
-    /* アニメーションや背景色の変更は削除 */
 }
 
 /* スライドショーのスタイル */
@@ -69,7 +68,7 @@ nav .nav-button:hover {
     transition: opacity 1s ease; /* 1秒のフェード効果 */
     object-fit: cover; /* アスペクト比を保ちながら収める */
     aspect-ratio: 2.35; /* アスペクト比を2.35:1に設定 */
-    z-index: 0; /* スライドがインジケーターの背面に表示されるように */
+    z-index: 1; /* スライドがインジケーターの背面に表示されるように */
 }
 
 /* 最初のスライドを表示 */
@@ -87,29 +86,33 @@ section {
 }
 
 /* インジケーターのスタイル */
-.indicator-container {
-    text-align: center; /* 中央揃え */
-    position: absolute; /* 絶対位置に設定 */
-    bottom: 20px; /* スライドの下に配置 */
-    left: 50%; /* 中央に配置 */
-    transform: translateX(-50%); /* 中央揃えのためのトランスフォーム */
-    z-index: 1; /* スライドより前面に表示 */
+.indicators {
+    display: flex; /* インジケーターを横並びにする */
+    justify-content: center; /* 中央揃え */
+    position: absolute; /* 画像の上に重ねる */
+    bottom: 10%; /* 画像の下に配置（%で調整可能） */
+    width: 100%; /* 幅を100%に */
+    pointer-events: none; /* インジケーターの下のスライドをクリックできるようにする */
+    z-index: 3; /* インジケーターを最前面に表示 */
 }
 
 .indicator {
-    display: inline-block; /* インラインブロックに設定 */
-    width: 10px; /* インジケーターの幅 */
-    height: 10px; /* インジケーターの高さ */
-    margin: 0 5px; /* 左右のマージン */
+    background-color: transparent; /* インジケーターの中を透明に */
+    border: 2px solid gray; /* インジケーターの縁取りをグレーに */
     border-radius: 50%; /* 丸くする */
-    background-color: #bbb; /* デフォルトの色 */
-    opacity: 0.5; /* 初期の不透明度 */
-    transition: opacity 0.6s; /* フェード効果 */
+    width: 1.5vw; /* 幅をビュー幅の1.5%に */
+    height: 1.5vw; /* 高さも同じく */
+    margin: 0 5px; /* インジケーター間のマージン */
+    display: flex; /* フレックスボックスで中央揃え */
+    justify-content: center; /* 水平方向に中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+    cursor: pointer; /* カーソルをポインターに */
+    transition: background-color 0.3s; /* ホバー時の色変化に遷移を追加 */
 }
 
 .indicator.active {
-    background-color: #717171; /* アクティブなインジケーターの色 */
-    opacity: 1; /* 不透明度を完全にする */
+    background-color: darkblue; /* アクティブなインジケーターの中を暗めの青色に */
+    border: 2px solid gray; /* 縁取りはグレーに */
 }
 
 /* スクロールバーのスタイル */
