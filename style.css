@@ -4,182 +4,180 @@
     src: url('fonts/Corporate-Logo-Bold-ver3.otf') format('truetype');
 }
 
-/* ヘッダーのスタイル */
-#header {
-    color: black; /* ヘッダーの文字色を黒に */
-    height: 10vh; /* ビューポートの高さの10%に設定 */
-    width: 100%;
-    background-color: white; /* ヘッダーの色を白に設定 */
+/* ヘッダーを固定するスタイル */
+header {
     display: flex;
-    align-items: center;
     justify-content: center;
-    position: relative; /* 位置を相対的に設定 */
-    z-index: 10; /* スライドショーの上に表示 */
+    align-items: center;
+    height: 60px;
+    background-color: white;
 }
 
-/* ナビゲーションのスタイル */
 nav {
-    display: flex; /* ナビゲーションをフレックスボックスに */
-    flex-direction: row; /* 横並びに設定 */
+    display: flex;
+    flex-direction: row;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: none;
+}
+
+/* ホバー、アクティブ、フォーカス時のスタイル */
+nav a:hover,
+nav a:active,
+nav a:focus {
+    color: black;
+    background-color: transparent;
+}
+
+/* アクティブなボタンのスタイル */
+nav a.active {
+    color: black;
+    background-color: transparent;
 }
 
 /* ナビゲーションボタンのスタイル */
 nav .nav-button {
-    color: black; /* ボタン内の文字色を黒に設定 */
+    color: black;
     text-decoration: none;
-    padding: 1.5vh 2vw; /* 高さをvh、横幅をvwで設定 */
-    margin: 0 1vw; /* 横のマージンもvwで設定 */
-    font-size: 1.6vh; /* 文字サイズを調整 */
-    letter-spacing: 0.1em; /* 文字の間隔を調整 */
-    font-family: 'Corporate-Logo-Bold-ver3', sans-serif; /* コーポレートロゴフォントを指定 */
-    min-width: 60px; /* 最小幅を設定 */
-    min-height: 30px; /* 最小高を設定 */
-    background-color: transparent; /* ボタンの背景を透明に設定 */
+    padding: 1.5vh 2vw;
+    margin: 0 1vw;
+    font-size: 1.6vh;
+    letter-spacing: 0.1em;
+    border: 2px solid transparent;
     border-radius: 5px;
-    display: flex; /* フレックスボックスで中央揃え */
-    align-items: center; /* 垂直方向に中央揃え */
-    justify-content: center; /* 水平方向に中央揃え */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* ボタンがホバーしたときのスタイル */
+/* ボタンにマウスを重ねたときのスタイル */
 nav .nav-button:hover {
-    color: #333; /* ボタン内の文字色を青みのかかった黒に設定 */
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* スライドショーのスタイル */
 .slideshow-container {
-    width: 100%;
-    height: calc(100vh - 10vh); /* ビューポートの高さからヘッダーの高さを引く */
-    margin: 0; /* マージンをゼロに */
     position: relative;
-    top: 0; /* ヘッダーの下に表示 */
-    overflow: hidden;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden; /* コンテナを超える部分を非表示にする */
 }
 
-/* 各スライドのスタイル */
+/* スライドのスタイル */
 .slide {
-    width: 100%;
-    height: auto; /* 高さを自動に設定 */
-    max-height: calc(100vh - 10vh); /* ヘッダーの高さを考慮して最大高さを設定 */
     position: absolute;
-    top: 0; /* ヘッダーの最下部に接着 */
+    width: 100%;
+    aspect-ratio: 2.35 / 1; /* アスペクト比を2.35:1に設定 */
+    opacity: 0; /* 初期は透明 */
+    transition: opacity 1s ease; /* フェードイン・フェードアウトのトランジション */
+    top: 0; /* スライドの位置を上部に固定 */
     left: 0;
-    opacity: 0;
-    transition: opacity 1s ease; /* 1秒のフェード効果 */
-    object-fit: cover; /* アスペクト比を保ちながら収める */
-    aspect-ratio: 2.35; /* アスペクト比を2.35:1に設定 */
-    z-index: 1; /* スライドがインジケーターの背面に表示されるように */
 }
 
-/* 最初のスライドを表示 */
+/* スライド内の画像スタイル */
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* アスペクト比を維持しながら中央で切り取る */
+    object-position: center; /* 画像の中央部分を表示 */
+}
+
+/* アクティブなスライドのスタイル */
 .slide.active {
-    opacity: 1;
-}
-
-/* メインコンテンツのスタイル */
-main {
-    padding: 20px; /* 上下のパディングを追加 */
-}
-
-section {
-    margin-top: 20px; /* スライドショーとのスペース */
+    opacity: 1; /* フェードインで表示 */
+    position: relative; /* アクティブなスライドのみ表示 */
 }
 
 /* インジケーターのスタイル */
 .indicators {
-    display: flex; /* インジケーターを横並びにする */
-    justify-content: center; /* 中央揃え */
-    position: absolute; /* 画像の上に重ねる */
-    bottom: 10%; /* 画像の下に配置（%で調整可能） */
-    width: 100%; /* 幅を100%に */
-    pointer-events: none; /* インジケーターの下のスライドをクリックできるようにする */
-    z-index: 3; /* インジケーターを最前面に表示 */
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; /* インジケーターを横並びに */
+    gap: 12px; /* インジケーター間のスペースを設定 */
 }
 
+/* インジケーターの基本スタイル */
 .indicator {
-    background-color: transparent; /* インジケーターの中を透明に */
-    border: 2px solid gray; /* インジケーターの縁取りをグレーに */
-    border-radius: 50%; /* 丸くする */
-    width: 1.5vw; /* 幅をビュー幅の1.5%に */
-    height: 1.5vw; /* 高さも同じく */
-    margin: 0 5px; /* インジケーター間のマージン */
-    display: flex; /* フレックスボックスで中央揃え */
-    justify-content: center; /* 水平方向に中央揃え */
-    align-items: center; /* 垂直方向に中央揃え */
-    cursor: pointer; /* カーソルをポインターに */
-    transition: background-color 0.3s; /* ホバー時の色変化に遷移を追加 */
+    cursor: pointer; /* ポインタを表示 */
+    height: 10px; /* 高さを10pxに設定 */
+    width: 10px; /* 幅を10pxに設定 */
+    border-radius: 50%; /* 円形にする */
+    background-color: transparent; /* 背景色を透明に設定 */
+    border: 2px solid rgba(255, 255, 255, 0.8); /* 白いボーダーに透明度を追加（50%の透明度） */
+    transition: background-color 0.3s, border-color 0.3s; /* 背景色とボーダーのトランジション */
 }
 
+/* アクティブなインジケーターのスタイル */
 .indicator.active {
-    background-color: darkblue; /* アクティブなインジケーターの中を暗めの青色に */
-    border: 2px solid gray; /* 縁取りはグレーに */
+    background-color: #3f658b; /* アクティブ時の背景色 */
+    border-color: transparent; /* アクティブ時にボーダーを透明にする */
 }
 
-/* スクロールバーのスタイル */
-::-webkit-scrollbar {
-    width: 12px; /* スクロールバーの幅を設定 */
+
+
+
+/* エッセイカードのスタイル */
+.essay-card {
+    width: 30%;
+    margin: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent; /* スクロールバーの背景を透明に設定 */
-    border-radius: 10px; /* スクロールバーの角を丸くする */
+/* ホバー時のエッセイカードのスタイル */
+.essay-card:hover {
+    transform: scale(1.02);
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5); /* スクロール部分の色（半透明の黒） */
-    border-radius: 10px; /* 角を丸く設定 */
-    border: 3px solid transparent; /* 内側に透明の境界線で角の丸みを際立たせる */
-    background-clip: content-box; /* 背景クリッピングを設定 */
+/* エッセイカード内の画像のスタイル */
+.essay-card-image img {
+    width: 100%;
+    height: auto;
 }
 
-/* 画像をぼかし、サイズが変更されないようにする */
-html, body {
-    margin: 0; /* デフォルトのマージンをゼロに */
-    padding: 0; /* デフォルトのパディングをゼロに */
-    width: 100%; /* 幅を100%に設定 */
-    overflow-x: hidden; /* 横方向のオーバーフローを隠す */
+/* タイトルと日付のスタイル */
+.essay-title, .essay-date {
+    color: black;
+    text-decoration: none;
+    padding-left: 15px;
 }
 
-.essay-image-container {
-    position: relative; /* タイトルを前面に配置するため */
-    width: 100vw; /* ビューポートの幅に合わせる */
-    height: calc(100vw / 2.35); /* アスペクト比を維持 */
-    overflow: hidden; /* はみ出した部分を隠す */
-    left: 0; /* 左側の位置をゼロに */
-    margin: 0; /* マージンをゼロに */
+/* エッセイリストのスタイル */
+.essay-list {
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
-.essay-image {
-    width: 100%; /* コンテナの幅にぴったり合わせる */
-    height: 100%; /* コンテナの高さに合わせる */
-    object-fit: cover; /* 画像のアスペクト比を保ちつつコンテナに収める */
-    filter: blur(2px); /* ぼかし効果を追加 */
-}
-
-.essay-title {
-    position: absolute; /* 絶対位置を設定 */
-    bottom: 15px; /* 下からの距離 */
-    left: 15px; /* 左からの距離 */
-    color: white; /* 文字色を白に設定 */
-    padding: 5px; /* パディングを追加 */
-    border-radius: 5px; /* 角を丸く設定 */
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5); /* 文字に影をつけて視認性を向上 */
-    z-index: 10; /* 前面に表示 */
-    font-family: 'Corporate-Logo-Bold-ver3', sans-serif; /* フォントを指定 */
-}
-
+/* エッセイリストタイトルのスタイル */
 .essay-list-title {
-    text-align: center; /* 中央揃え */
-    font-size: 2.5em; /* フォントサイズを調整 */
-    margin-top: 20px; /* 上部のマージンを追加 */
-    letter-spacing: 0.05em; /* 文字間隔を調整 */
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
+/* エッセイリストサブタイトルのスタイル */
 .essay-list-subtitle {
-    text-align: center; /* 中央揃え */
-    font-size: 1.1em; /* フォントサイズを調整 */
-    margin-top: -20px; /* 上部のマージンを少し減らす */
-    margin-bottom: 20px; /* 下部のマージンを追加 */
-    color: rgb(0, 0, 0); /* 文字色を灰色に設定 */
-    letter-spacing: 0.3em; /* 文字間隔を調整 */
+    font-size: 1.5em;
+    margin-bottom: 20px;
 }
+
+/* 背景色をねずみ色に設定 */
+.essay-card-container {
+    background-color: #b0b0b0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* リンク全般に下線と青色を表示しないようにする */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+

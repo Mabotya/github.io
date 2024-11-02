@@ -1,43 +1,28 @@
-let slideIndex = 0;
+let slideIndex = 0; // 初期値を0に設定
 const slides = document.querySelectorAll('.slide');
 const indicatorsContainer = document.createElement('div');
 indicatorsContainer.classList.add('indicators');
 
-slides.forEach((slide, index) => {
-    const indicator = document.createElement('span');
-    indicator.classList.add('indicator');
-    indicator.textContent = index + 1; // インジケーターの番号を表示
-    indicator.addEventListener('click', () => {
-        showSlide(index); // クリックしたインジケーターに基づいてスライドを表示
-    });
-    indicatorsContainer.appendChild(indicator);
+// ページが読み込まれたときにフェードインを適用
+window.addEventListener('load', () => {
+    initSlides(); // スライドの初期化を呼び出す
 });
 
-document.querySelector('.slideshow-container').appendChild(indicatorsContainer);
-
+// 自動でスライドを切り替える関数
 function showSlides() {
-    slides.forEach((slide) => {
-        slide.classList.remove('active');
-    });
-
-    slideIndex++;
-    if (slideIndex >= slides.length) {
-        slideIndex = 0;
-    }
-
-    slides[slideIndex].classList.add('active');
-    updateIndicators();
-    setTimeout(showSlides, 5000);
+    slides[slideIndex].style.opacity = '0'; // 現在のスライドをフェードアウト
+    slideIndex = (slideIndex + 1) % slides.length; // 次のスライドへ
+    slides[slideIndex].style.opacity = '1'; // 次のスライドを即座に表示
+    updateIndicators(); // インジケーターを更新
+    setTimeout(showSlides, 5000); // 5秒ごとに切り替え
 }
 
-// スライドを特定のインデックスに切り替える関数
+// 特定のインデックスにスライドを切り替える関数
 function showSlide(index) {
-    slideIndex = index;
-    slides.forEach((slide) => {
-        slide.classList.remove('active');
-    });
-    slides[slideIndex].classList.add('active');
-    updateIndicators();
+    slides[slideIndex].style.opacity = '0'; // 現在のスライドをフェードアウト
+    slideIndex = index; // 新しいスライドのインデックスを設定
+    slides[slideIndex].style.opacity = '1'; // 新しいスライドを即座に表示
+    updateIndicators(); // インジケーターを更新
 }
 
 // インジケーターの更新
@@ -49,4 +34,21 @@ function updateIndicators() {
 }
 
 // 初回実行
-showSlides();
+function initSlides() {
+    slides.forEach((slide, index) => {
+        slide.style.opacity = index === slideIndex ? '1' : '0'; // 初期状態を設定
+        if (index === slideIndex) {
+            slide.classList.add('active'); // 初期スライドをアクティブに
+        }
+    });
+    updateIndicators(); // インジケーターの初期状態を更新
+    setTimeout(showSlides, 5000); // 自動スライドの実行を遅延させる
+
+    // インジケーターにクリックイベントリスナーを追加
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index)); // クリックされたときの処理
+    });
+}
+
+
