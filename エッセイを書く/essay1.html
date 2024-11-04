@@ -6,6 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エッセイ 1</title>
     <link rel="stylesheet" href="../style.css"> <!-- CSSのパスを確認してください -->
+    <style>
+        @font-face {
+            font-family: 'Corporate-Logo-Bold-ver3';
+            src: url('../path/to/Corporate-Logo-Bold-ver3.woff2') format('woff2'), /* Webフォントを指定するパスに修正 */
+                 url('../path/to/Corporate-Logo-Bold-ver3.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .essay-image-container {
+            position: relative;
+            width: 100%; /* 親要素の幅に合わせる */
+            padding-top: 42.5%; /* 2.35:1のアスペクト比を保つためのパディング */
+            overflow: hidden; /* はみ出した部分を隠す */
+        }
+
+        .essay-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%; /* 親要素にフィットさせる */
+            height: auto; /* 自動で高さを調整 */
+            min-width: 100%; /* 最小幅を100%に設定して、左右がギリギリはいるようにする */
+            min-height: 100%; /* 最小高さを100%に設定して、上下を覆う */
+            transform: translate(-50%, -50%); /* 画像を中央に配置 */
+            object-fit: cover; /* 画像を切り取ってもアスペクト比を保つ */
+        }
+
+        /* タイトルのスタイル */
+        .essay-title {
+            position: absolute; /* タイトルを絶対位置に設定 */
+            bottom: 5%; /* 縦の位置を調整 */
+            left: 2%; /* 横の位置を調整 */
+            font-size: 3.3vw; /* ビューポート幅に応じて拡大縮小 */
+            color: white; /* タイトルの文字色を白に設定（背景に応じて調整） */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* 影をつけて視認性を向上 */
+            font-family: 'Corporate-Logo-Bold-ver3'; /* フォントファミリーを設定 */
+        }
+
+        /* 日付のスタイル */
+        .essay-date {
+            position: absolute; /* 日付を絶対位置に設定 */
+            bottom: 0%; /* 縦の位置を調整 */
+            left: 2%; /* 横の位置を調整 */
+            font-size: 2vw; /* ビューポート幅に応じて拡大縮小 */
+            color: white; /* 日付の文字色を白に設定 */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* 影をつけて視認性を向上 */
+            font-family: 'Corporate-Logo-Bold-ver3'; /* フォントファミリーを設定 */
+        }
+
+        section h1 {
+            font-size: min(4vw, 25px); /* ビューポート幅に基づくフォントサイズ */
+            margin: 20px 10px; /* 上下に余白を追加 */
+        }
+
+        section p {
+            font-size: min(3vw, 20px); /* ビューポート幅に基づくフォントサイズ */
+            line-height: 1.6; /* 行間を調整 */
+            margin: 0px 30px; /* 上下に余白を追加 */
+        }
+    </style>
 </head>
 
 <body>
@@ -20,13 +81,15 @@
     <main>
         <div class="essay-image-container">
             <img src="../essays-images/essay1.png" alt="エッセイの画像" class="essay-image">
-            <h1 class="essay-title">エッセイのタイトル</h1>
+            <h1 class="essay-title">ホームページつくりました</h1><!-- タイトルを追加 -->
+            <p class="essay-date">2024年11月3日</p> <!-- 日付を追加 -->
         </div>        
         <section>
-            <h1>エッセイ 1の内容</h1>
-            <p>ここにエッセイの内容を書いてください。</p>
+            <h1>なぜこのタイミング？</h1>
+            <p>なぜこのタイミングかというと！...まじで気まぐれです。</p>
+            <p>そもそもこのサイトを作った理由というものもありませんし、なぜエッセイを書いているのかもわかりません。</p>
+            <p></p>
         </section>
     </main>
 </body>
 </html>
-
